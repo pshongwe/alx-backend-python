@@ -2,15 +2,15 @@
 """
 101-safely_get_value.py
 """
-from typing import Any, Mapping, TypeVar, Union
+from typing import Any, Mapping, Union, TypeVar
 
 
 T = TypeVar('T')
+Res = Union[Any, T]
+Def = Union[T, None]
 
 
-def safely_get_value(dct: Mapping[Any, Any],
-                     key: Any,
-                     default: Union[T, None] = None) -> Union[Any, T]:
+def safely_get_value(dct: Mapping, key: Any, default: Def = None) -> Res:
     """Return the value from the dictionary for the given key if it exists,
     otherwise return the default value."""
     if key in dct:
