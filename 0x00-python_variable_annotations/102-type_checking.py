@@ -2,15 +2,15 @@
 """
 102-type_checking.py
 """
-from typing import List, Tuple, Union
+from typing import List, Tuple
 
 
-def zoom_array(lst: Tuple[int, ...], factor: int = 2) -> List[int]:
+def zoom_array(lst: Tuple, factor: int = 2) -> List:
     """Return a zoomed-in list by repeating each element
     in the tuple factor times."""
-    zoomed_in: List[int] = [
+    zoomed_in: List = [
         item for item in lst
-        for i in range(factor)
+        for i in range(int(factor))
     ]
     return zoomed_in
 
