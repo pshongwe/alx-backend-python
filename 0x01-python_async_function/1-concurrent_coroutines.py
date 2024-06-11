@@ -4,7 +4,9 @@
 """
 from typing import List
 import asyncio
-from 0_basic_async_syntax import wait_random
+
+
+wait_random = __import__('0-basic_async_syntax').wait_random
 
 
 async def wait_n(n: int, max_delay: int) -> List[float]:
@@ -21,4 +23,4 @@ async def wait_n(n: int, max_delay: int) -> List[float]:
             j -= 1
         delays[j + 1] = key
 
-    return delays
+    return sorted(delays)
