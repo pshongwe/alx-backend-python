@@ -5,11 +5,12 @@
 import asyncio
 import random
 
+
 async def async_generator():
     """
     Asynchronously generates 10 random numbers
     between 0 and 10, waiting 1 second between each.
-    
+
     Yields:
         float: A random number between 0 and 10.
     """
