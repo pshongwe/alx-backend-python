@@ -24,7 +24,7 @@ class TestAccessNestedMap(unittest.TestCase):
         """Test that access_nested_map raises an error correctly"""
         with self.assertRaises(KeyError) as cm:
             access_nested_map(nested_map, path)
-        self.assertEqual(str(cm.exception), str(path[-1]))
+        self.assertEqual(cm.exception, path[-1])
 
 
 if __name__ == "__main__":
