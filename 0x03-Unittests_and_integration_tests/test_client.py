@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """test utils  """
 import unittest
-from unittest.mock import patch
+from unittest.mock import patch, PropertyMock
 from parameterized import parameterized
 from client import GithubOrgClient
 from utils import get_json
@@ -31,6 +31,18 @@ class TestGithubOrgClient(unittest.TestCase):
         url = "https://api.github.com/orgs/"
         mock_get_json.assert_called_once_with(f"{url}{org_name}")
         self.assertEqual(result, expected_result)
+
+    @patch('client.GithubOrgClient.org', new_callable=PropertyMock)
+    def test_public_repos_url(self, mock_org):
+        """
+        Test that GithubOrgClient._public_repos_url
+        returns the correct URL.
+        """
+        url = "https://api.github.com/orgs/google/repos"
+        mock_org.return_value = {"repos_url": url}
+        client = GithubOrgClient("google")
+        result = client._public_repos_url
+        self.assertEqual(result, url)
 
 
 if __name__ == "__main__":
