@@ -5,7 +5,7 @@ from unittest.mock import patch, Mock
 from typing import Dict
 from parameterized import parameterized
 from utils import access_nested_map
-from utils import get_json
+from utils import get_json, memoize
 
 
 class TestGetJson(unittest.TestCase):
@@ -78,7 +78,7 @@ class TestMemoize(unittest.TestCase):
 
         with patch.object(TestClass,
                           'a_method',
-                          return_value=lambda: 42,
+                          return_value=42,
                           ) as mock_method:
             first_call = test_instance.a_property
             second_call = test_instance.a_property
