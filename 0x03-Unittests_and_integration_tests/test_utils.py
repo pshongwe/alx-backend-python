@@ -2,7 +2,7 @@
 """unit tests"""
 import unittest
 from unittest.mock import patch, Mock
-from typing import Dict
+from typing import Dict, Tuple, Union
 from parameterized import parameterized
 from utils import access_nested_map
 from utils import get_json, memoize
